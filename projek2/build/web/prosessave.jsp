@@ -15,13 +15,15 @@
         String email=request.getParameter("email");
         String dapat=request.getParameter("cmdedit");
         
+        String peminatan123 = peminatan1+","+peminatan2+","+peminatan3;
+        
         koneksi obj = new koneksi();
         Connection conn = obj.bukaKoneksi();
         Statement stm = conn.createStatement();
         try {
         if (request.getParameter("cmdedit")!=null){
-            String query ="update calas19 set nama'"+nama+"'," + 
-                    "jk='"+jk+"'," + "alamat='"+alamat+"'," + "agama='"+email+"',";
+            String query ="update calas19 set nama = '"+nama+"'," + 
+                    "jk='"+jk+"'," + "peminatan = '"+peminatan123+"', " + "alamat='"+alamat+"'," + "agama='"+agama+"'," + "email = '"+email+"' where nim ='"+nim+"'";
             stm.executeUpdate(query);
             out.println("Data sudah diubah");
             out.println("<a href='index.jsp'>KEMBALI</a>");

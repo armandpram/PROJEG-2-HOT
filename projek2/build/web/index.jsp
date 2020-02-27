@@ -384,7 +384,7 @@ function validasi(form){
                                             out.print("<td>"+variabel.getString("EMAIL")+"</td>");
                                        %>
                                        <td><a href="#editEmployeeModal<%= variabel.getString("NIM") %>" class="edit" name="cmdedit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" name="cmddelete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
+                                    <a href="#deleteEmployeeModal<%= variabel.getString("NIM") %>" class="delete" name="cmddelete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
                                     <div id="editEmployeeModal<%= variabel.getString("NIM") %>" class="modal fade">
                                         <!--String nim = request.-->
                                         <div class="modal-dialog">
@@ -420,9 +420,10 @@ function validasi(form){
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Agama</label>
-                                                            <select name="agama" class="form-control"> 
-                                                                <option value="Islam">Islam</option>
-                                                                <option value="Protestan">Protestan</option>
+                                                            <select name="agama" class="form-control">
+                                                                <option>-Pilih Agama-</option>
+                                                                <option value="Islam" >Islam</option>
+                                                                <option value="Protestan ">Protestan</option>
                                                                 <option value="Katolik">Katolik</option>
                                                                 <option value="Hindu">Hindu</option>
                                                                 <option value="Budha">Budha</option>
@@ -435,8 +436,32 @@ function validasi(form){
                                                     </div>
                                                         <div class="modal-footer">
                                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <input type="submit" class="btn btn-info" value="Save">
+                                                            <input type="submit" name="cmdedit" class="btn btn-info" value="Save">
                                                         </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                                    <!-- Delete Modal HTML -->
+                                    <div id="deleteEmployeeModal<%= variabel.getString("NIM") %>" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form action="prosesdelete.jsp" method="post">
+                                                    <div class="modal-header">						
+                                                        <h4 class="modal-title">Delete Employee</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">					
+                                                        <p>Are you sure you want to delete these Records?</p>
+                                                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                                    </div>
+                                                    <input type="hidden" value="<%= variabel.getString("NIM") %>" name="nim" value="NIM" class="form-control" >
+                                                    
+                                                    <div class="modal-footer">
+                                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                        <input type="submit" name="cmddelete" class="btn btn-danger" value="Delete">
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -513,11 +538,11 @@ function validasi(form){
                 </div>
             </div>
 	</div>
-	<!-- Delete Modal HTML -->
+<!--	 Delete Modal HTML 
 	<div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">
 		<div class="modal-content">
-                    <form>
+                    <form action="prosesdelete.jsp" method="post">
 			<div class="modal-header">						
                             <h4 class="modal-title">Delete Employee</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -528,11 +553,11 @@ function validasi(form){
                         </div>
 			<div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-danger" value="Delete">
+                            <input type="submit" name="cmddelete" class="btn btn-danger" value="Delete">
 			</div>
                     </form>
 		</div>
             </div>
-	</div>
+	</div>-->
 </body>
 </html>

@@ -19,7 +19,15 @@
             if(nim.equals("")){
                 out.print("<script>alert('No Induk Mahasiswa Harus di isi!')</script>");
                
-            }else {
+            }else if(peminatan1=="null"){
+                peminatan1 = "";
+            }else if(peminatan1=="null"){
+                peminatan1 = "";
+            }else if(peminatan1=="null"){
+                peminatan1 = "";
+            }
+            
+            else {
                 String peminatan123 = peminatan1+","+peminatan2+","+peminatan3;
             
                 try
